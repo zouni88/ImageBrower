@@ -3,6 +3,8 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'bugly'
+
 
 android {
     compileSdkVersion 27
@@ -13,7 +15,30 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        signingConfig signingConfigs.debug
+
+        ndk {
+            //设置支持的SO库架构
+            abiFilters 'armeabi', 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+        }
     }
+
+    signingConfigs {
+        release {
+            storeFile file('photobrower.jks')
+            keyAlias 'mzitu'
+            keyPassword 'qaz521..'
+            storePassword 'qaz521..'
+        }
+        debug {
+            storeFile file('photobrower.jks')
+            keyAlias 'mzitu'
+            keyPassword 'qaz521..'
+            storePassword 'qaz521..'
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -31,6 +56,12 @@ android {
         // but continue the build even when errors are found:
         abortOnError false
     }
+}
+
+bugly {
+    appId = 'b31be7b51c' // 注册时分配的App ID
+    appKey = '5eb27938-0675-4cfc-a93c-7fc817674ba0' // 注册时分配的App Key
+    debug = true
 }
 
 dependencies {
@@ -55,7 +86,6 @@ dependencies {
     implementation 'me.zhanghai.android.materialprogressbar:library:1.4.2'
     implementation 'com.lcodecorex:tkrefreshlayout:1.0.7'
     implementation 'me.drakeet.multitype:multitype:3.4.4'
-
     //图片处理
     implementation 'com.facebook.fresco:fresco:1.9.0'
     implementation 'jp.wasabeef:fresco-processors:2.1.0'

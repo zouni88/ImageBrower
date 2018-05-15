@@ -24,7 +24,7 @@ public class PBApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        Bugly.init(getApplicationContext(), "e0bcbcc449", true);
+        Bugly.init(getApplicationContext(), "b31be7b51c", true);
         CrashReport.setUserId(getApplicationContext(), "android");
 
         /**

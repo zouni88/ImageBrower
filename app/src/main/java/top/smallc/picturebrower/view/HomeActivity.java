@@ -1,6 +1,5 @@
 package top.smallc.picturebrower.view;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,12 +11,13 @@ import top.smallc.picturebrower.R;
 import top.smallc.picturebrower.db.ParentDb;
 import top.smallc.picturebrower.model.Parent;
 import top.smallc.picturebrower.view.adapter.TitleAdapter;
+import top.smallc.picturebrower.view.tools.HeaderTools;
 
 /**
  * @author small.cao
  * @date 2018/5/14
  */
-public class HomeActivity extends Activity {
+public class HomeActivity extends BaseActivity {
 
     private RecyclerView rcList;
 
@@ -32,6 +32,8 @@ public class HomeActivity extends Activity {
     }
 
     private void initView(){
+        HeaderTools.setTitle(this,R.string.home);
+
         rcList = super.findViewById(R.id.rv_list);
         rcList.setLayoutManager(new LinearLayoutManager(this));
 

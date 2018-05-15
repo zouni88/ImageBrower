@@ -14,6 +14,7 @@ import top.smallc.picturebrower.model.Item;
 import top.smallc.picturebrower.model.Parent;
 import top.smallc.picturebrower.view.adapter.DetailMediaAdapter;
 import top.smallc.picturebrower.view.tools.GridSpacingItemDecoration;
+import top.smallc.picturebrower.view.tools.HeaderTools;
 
 
 /**
@@ -36,6 +37,7 @@ public class DetailActivity extends BaseActivity {
     }
 
     private void initView(){
+        HeaderTools.setTitle(this,R.string.detail);
         recyclerView = super.findViewById(R.id.rv_media);
     }
 
