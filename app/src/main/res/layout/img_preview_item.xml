@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:gesture-image="http://schemas.polites.com/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.github.chrisbanes.photoview.PhotoView
+        android:id="@+id/image_zoom"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <!--<me.relex.photodraweeview.PhotoDraweeView
+        android:id="@+id/image_zoom"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:failureImage="@mipmap/ic_placeholder"
+        app:failureImageScaleType="centerCrop"
+        app:placeholderImage="@mipmap/ic_placeholder"
+        app:placeholderImageScaleType="centerCrop"
+        app:progressBarAutoRotateInterval="1000"
+        app:progressBarImage="@mipmap/icon_loading"
+        app:progressBarImageScaleType="centerInside" />-->
+
+
+</FrameLayout>

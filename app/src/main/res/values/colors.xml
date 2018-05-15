@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="green_wechat">#3BAF34</color>
+    <color name="green_studio">#2BA245</color>
+    <color name="transparent_half">#7F000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="black">#ff000000</color>
+    <color name="red">#e8383d</color>
+    <color name="darker_gray">#777</color>
+    <color name="green">#0ff0ff</color>
+    <color name="yellow">#FF33ff</color>
+    <color name="ligher_gray">#3e3a39</color>
+    <color name="offwhite">#eaeaea</color>
+    <!-- 灰白色 -->
+    <!-- <color name="offwhite">#C2C2C2</color>灰白色 -->
+    <color name="gold">#e0bf65</color>
+    <!-- vip bg_color -->
+    <drawable name="translucent_background">#5500ff</drawable>
+    <color name="menu_blue">#3ca3dc</color>
+    <!-- 半透明 -->
+    <color name="translucent">#99000000</color>
+
+    <color name="blue">#00a0e9</color>
+    <color name="grey_copy_right">#a0a0a0</color>
+    <color name="login_bg">#f7f7f7</color>
+    <color name="login_text">#bfbfbf</color>
+    <color name="login_remember_user_text">#818181</color>
+    <color name="set_text">#313131</color>
+    <color name="set_hotel">#959595</color>
+    <color name="pay">#004986</color>
+    <color name="result_view">#b0000000</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="possible_result_points">#c0ffff00</color>
+    <color name="pay_feedback_text">#00a0e9</color>
+    <color name="pay_failed_text">#e60012</color>
+    <color name="header_bg">#ccecfb</color>
+    <color name="login_stroke">#e2e2e2</color>
+    <color name="pay_card_no">#818181</color>
+
+    <color name="divider">#bfbfbf</color>
+
+    <!-- 雪白色 -->
+    <color name="floralwhite">#FFFAF0</color>
+
+    <!-- 暗灰色 -->
+    <color name="dimgrey">#E22F2F</color>
+    <!-- 标题字体 -->
+    <color name="title_color">#323232</color>
+    <color name="gray">#E84A40</color>
+    <color name="wechat_item_press">#D9D9D9</color>
+    <color name="bg_deep_blue">#262743</color>
+
+    <color name="red_1">#E82C5F</color>
+    <color name="black_text">#9B9B9B</color>
+    <color name="black_launcher_text">#292929</color>
+    <color name="blue_vercode">#2395FF</color>
+    <color name="blue_press">#3A5FCD</color>
+    <color name="grey">#D5D4D2</color>
+    <color name="grey_black">#999999</color>
+
+    <color name="content">#7B7B7B</color>
+    <color name="isfree">#A9A9A9</color>
+    <color name="gray_wechat_bg">#EBEBEB</color>
+
+    <color name="title_android_color">#4B4B4B</color>
+
+    <color name="time_color">#828282</color>
+    <color name="name_color">#333333</color>
+</resources>
