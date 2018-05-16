@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import java.util.List;
@@ -12,7 +13,8 @@ import top.smallc.picturebrower.R;
 import top.smallc.picturebrower.db.ItemDb;
 import top.smallc.picturebrower.model.Item;
 import top.smallc.picturebrower.model.Parent;
-import top.smallc.picturebrower.view.adapter.DetailMediaAdapter;
+import top.smallc.picturebrower.view.adapter.DetailMediaGridAdapter;
+import top.smallc.picturebrower.view.adapter.DetailMediaListAdapter;
 import top.smallc.picturebrower.view.tools.GridSpacingItemDecoration;
 import top.smallc.picturebrower.view.tools.HeaderTools;
 
@@ -33,12 +35,24 @@ public class DetailActivity extends BaseActivity {
             return;
         }
         initView();
-        initData();
+        initList();
     }
 
     private void initView(){
         HeaderTools.setTitle(this,R.string.detail);
         recyclerView = super.findViewById(R.id.rv_media);
+    }
+
+    private void initList(){
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        /* adapter 只负责灌输、适配数据，布局交给 LayoutManager，可复用 */
+        DetailMediaListAdapter adapter = new DetailMediaListAdapter(recyclerView);
+        recyclerView.setAdapter(adapter);
+
+        ItemDb itemDb = new ItemDb(this);
+        List<Item> list = itemDb.getItemsByParentId(parent.id);
+        adapter.setData(list);
     }
 
     private final static int SPAN_COUNT = 4;
@@ -48,7 +62,7 @@ public class DetailActivity extends BaseActivity {
         int space = recyclerView.getContext().getResources().getDimensionPixelSize(R.dimen.space1);
         recyclerView.addItemDecoration(new GridSpacingItemDecoration(SPAN_COUNT,space,true));
         /* adapter 只负责灌输、适配数据，布局交给 LayoutManager，可复用 */
-        DetailMediaAdapter adapter = new DetailMediaAdapter(recyclerView);
+        DetailMediaGridAdapter adapter = new DetailMediaGridAdapter(recyclerView);
         recyclerView.setAdapter(adapter);
 
         ItemDb itemDb = new ItemDb(this);

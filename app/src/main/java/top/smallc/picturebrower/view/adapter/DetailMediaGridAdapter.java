@@ -21,12 +21,12 @@ import top.smallc.picturebrower.view.tools.preview.PreviewActivity;
  * Created by cao_c on 2018/3/26.
  */
 
-public class DetailMediaAdapter extends RecyclerView.Adapter<DetailMediaAdapter.RecyclerHolder> {
+public class DetailMediaGridAdapter extends RecyclerView.Adapter<DetailMediaGridAdapter.RecyclerHolder> {
     private Context mContext;
     private ArrayList<Item> dataList = new ArrayList<>();
     private AutoHeightTools autoHeightTools;
 
-    public DetailMediaAdapter(RecyclerView recyclerView) {
+    public DetailMediaGridAdapter(RecyclerView recyclerView) {
         this.mContext = recyclerView.getContext();
         autoHeightTools = new AutoHeightTools(mContext);
     }

@@ -39,7 +39,7 @@ public class SitMediaItemDetailViewBinder extends ItemViewBinder<ItemList, SitMe
     static class ViewHolder extends RecyclerView.ViewHolder {
         private final static int SPAN_COUNT = 4;
         private RecyclerView recyclerView;
-        private DetailMediaAdapter adapter;
+        private DetailMediaGridAdapter adapter;
 
 
         ViewHolder(@NonNull View itemView) {
@@ -50,7 +50,7 @@ public class SitMediaItemDetailViewBinder extends ItemViewBinder<ItemList, SitMe
             int space = recyclerView.getContext().getResources().getDimensionPixelSize(R.dimen.space1);
             recyclerView.addItemDecoration(new GridSpacingItemDecoration(SPAN_COUNT,space,true));
             /* adapter 只负责灌输、适配数据，布局交给 LayoutManager，可复用 */
-            adapter = new DetailMediaAdapter(recyclerView);
+            adapter = new DetailMediaGridAdapter(recyclerView);
             recyclerView.setAdapter(adapter);
 
         }

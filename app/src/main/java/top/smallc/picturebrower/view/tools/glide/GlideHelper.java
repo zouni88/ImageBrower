@@ -25,11 +25,23 @@ public class GlideHelper {
             return header;
         });
 
-        RequestOptions myOptions = new RequestOptions()
-                .centerCrop();
-
+        RequestOptions myOptions = new RequestOptions().centerCrop();
         //显示图片
         Glide.with(view.getContext()).load(gliderUrl).apply(myOptions).into(view);
+    }
 
+    public static void show1(ImageView view,String url){
+        GlideUrl gliderUrl = new GlideUrl(url, () -> {
+            Map<String, String> header = new HashMap<>();
+            //不一定都要添加，具体看原站的请求信息
+            header.put("User-Agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)");
+            header.put("Referer", "http://i.meizitu.net");
+            header.put("Referer","http://www.mzitu.com");
+            return header;
+        });
+
+        RequestOptions myOptions = new RequestOptions().fitCenter();
+        //显示图片
+        Glide.with(view.getContext()).load(gliderUrl).apply(myOptions).into(view);
     }
 }
