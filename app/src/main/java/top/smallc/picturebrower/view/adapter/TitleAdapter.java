@@ -14,6 +14,7 @@ import java.util.List;
 import top.smallc.picturebrower.R;
 import top.smallc.picturebrower.model.Parent;
 import top.smallc.picturebrower.view.DetailActivity;
+import top.smallc.picturebrower.view.manager.ParentManager;
 
 
 /**
@@ -64,6 +65,9 @@ public class TitleAdapter extends RecyclerView.Adapter<TitleAdapter.RecyclerHold
 
             iv_title.setOnClickListener(v -> {
                 Parent parent = (Parent) v.getTag();
+
+                ParentManager.getInstance().deleteById(v.getContext(),parent.id);
+
                 DetailActivity.start(v.getContext(),parent);
             });
         }

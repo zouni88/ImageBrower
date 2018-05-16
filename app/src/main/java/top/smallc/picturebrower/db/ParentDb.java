@@ -35,4 +35,10 @@ public class ParentDb {
         return parents;
     }
 
+    public int deleteById(int id){
+        SQLiteDatabase sqLiteDatabase = dbHelper.openDatabase();
+        int count = sqLiteDatabase.delete("parent" ,"id=?",new String[]{id+""});
+        return count;
+    }
+
 }
