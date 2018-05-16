@@ -1,5 +1,6 @@
 package top.smallc.picturebrower.db;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -30,6 +31,8 @@ public class ParentDb {
             Parent parent = new Parent();
             parent.id = cursor.getInt(cursor.getColumnIndex("id"));
             parent.title = cursor.getString(cursor.getColumnIndex("title"));
+            parent.status = cursor.getInt(cursor.getColumnIndex("status"));
+            parent.star = cursor.getInt(cursor.getColumnIndex("star"));
             parents.add(parent);
         }
         return parents;
@@ -39,6 +42,24 @@ public class ParentDb {
         SQLiteDatabase sqLiteDatabase = dbHelper.openDatabase();
         int count = sqLiteDatabase.delete("parent" ,"id=?",new String[]{id+""});
         return count;
+    }
+
+    public void star(int id,int star){
+        ContentValues values = new ContentValues();
+        values.put("star", star);
+        int count = update(id,values);
+    }
+
+    public int isRead(int id,int status){
+        ContentValues values = new ContentValues();
+        values.put("status", status);
+        int count = update(id,values);
+        return count;
+    }
+
+    private int update(int id,ContentValues values){
+        SQLiteDatabase sqLiteDatabase = dbHelper.openDatabase();
+        return sqLiteDatabase.update("parent",values,"id=?",new String[]{id+""});
     }
 
 }

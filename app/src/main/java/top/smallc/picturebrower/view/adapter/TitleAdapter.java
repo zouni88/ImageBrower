@@ -1,6 +1,7 @@
 package top.smallc.picturebrower.view.adapter;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,6 +47,13 @@ public class TitleAdapter extends RecyclerView.Adapter<TitleAdapter.RecyclerHold
     @Override
     public void onBindViewHolder(RecyclerHolder holder, int position) {
         Parent refs = dataList.get(position);
+        if(refs.status == 1){
+            int color = ContextCompat.getColor(holder.linearLayout.getContext(),R.color.red_1);
+            holder.linearLayout.setBackgroundColor(color);
+        } else {
+            int color = ContextCompat.getColor(holder.linearLayout.getContext(),R.color.colorAccent);
+            holder.linearLayout.setBackgroundColor(color);
+        }
         holder.iv_title.setTag(refs);
         holder.iv_title.setText(refs.title);
     }
@@ -66,12 +74,12 @@ public class TitleAdapter extends RecyclerView.Adapter<TitleAdapter.RecyclerHold
             iv_title.setOnClickListener(v -> {
                 Parent parent = (Parent) v.getTag();
 
-                ParentManager.getInstance().deleteById(v.getContext(),parent.id);
+                parent.status = 1;
+                ParentManager.getInstance().read(v.getContext(),parent.id,1);
 
                 DetailActivity.start(v.getContext(),parent);
             });
         }
     }
-
 
 }

@@ -52,7 +52,7 @@
             android:layout_centerVertical="true"
             android:background="@color/transparent"
             android:gravity="center"
-            android:src="@mipmap/more"
+            android:src="@mipmap/show_grid"
             android:scaleType="centerInside"
             android:tint="@color/title_color"
             />

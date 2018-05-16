@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.ImageView;
 
 import java.util.List;
 
@@ -17,6 +18,7 @@ import top.smallc.picturebrower.view.adapter.DetailMediaGridAdapter;
 import top.smallc.picturebrower.view.adapter.DetailMediaListAdapter;
 import top.smallc.picturebrower.view.tools.GridSpacingItemDecoration;
 import top.smallc.picturebrower.view.tools.HeaderTools;
+import top.smallc.picturebrower.view.tools.PreferenceUtils;
 
 
 /**
@@ -26,6 +28,8 @@ import top.smallc.picturebrower.view.tools.HeaderTools;
 public class DetailActivity extends BaseActivity {
     private Parent parent;
     private RecyclerView recyclerView;
+
+    private ImageView iv_point_record;
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
@@ -35,12 +39,36 @@ public class DetailActivity extends BaseActivity {
             return;
         }
         initView();
-        initList();
+        initData();
     }
 
     private void initView(){
         HeaderTools.setTitle(this,R.string.detail);
         recyclerView = super.findViewById(R.id.rv_media);
+        iv_point_record = super.findViewById(R.id.iv_point_record);
+        iv_point_record.setImageResource(R.mipmap.show_grid);
+        iv_point_record.setOnClickListener(v -> {
+            initShowType();
+            initData();
+        });
+    }
+
+    private void initShowType(){
+        if(PreferenceUtils.getBoolean(context,"isGrid",false)){
+            PreferenceUtils.putBoolean(context,"isGrid",false);
+            iv_point_record.setImageResource(R.mipmap.show_list);
+        } else {
+            PreferenceUtils.putBoolean(context,"isGrid",true);
+            iv_point_record.setImageResource(R.mipmap.show_grid);
+        }
+    }
+
+    private void initData(){
+        if(PreferenceUtils.getBoolean(context,"isGrid",false)){
+            initList();
+        } else {
+            initGrid();
+        }
     }
 
     private void initList(){
@@ -55,8 +83,8 @@ public class DetailActivity extends BaseActivity {
         adapter.setData(list);
     }
 
-    private final static int SPAN_COUNT = 4;
-    private void initData(){
+    private final static int SPAN_COUNT = 3;
+    private void initGrid(){
         GridLayoutManager layoutManager = new GridLayoutManager(this, SPAN_COUNT, GridLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
         int space = recyclerView.getContext().getResources().getDimensionPixelSize(R.dimen.space1);

@@ -43,4 +43,16 @@ public class ParentManager {
             onParentListener.delete(id);
         }
     }
+
+    public void star(Context context,int id,int star){
+
+    }
+
+    public void read(Context context,int id,int status){
+        ParentDb parentDb = new ParentDb(context);
+        if(parentDb.isRead(id,status) > 0){
+            onParentListener.delete(id);
+        }
+    }
+
 }

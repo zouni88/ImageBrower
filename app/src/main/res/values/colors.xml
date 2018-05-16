@@ -20,7 +20,7 @@
     <!-- <color name="offwhite">#C2C2C2</color>灰白色 -->
     <color name="gold">#e0bf65</color>
     <!-- vip bg_color -->
-    <drawable name="translucent_background">#5500ff</drawable>
+    <color name="translucent_background">#5500ff</color>
     <color name="menu_blue">#3ca3dc</color>
     <!-- 半透明 -->
     <color name="translucent">#99000000</color>
@@ -71,4 +71,5 @@
 
     <color name="time_color">#828282</color>
     <color name="name_color">#333333</color>
+    <color name="black_motor">#26262A</color>
 </resources>

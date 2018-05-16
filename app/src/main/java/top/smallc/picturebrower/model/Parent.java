@@ -10,7 +10,14 @@ public class Parent implements Serializable{
 
     public int id;
     public String title;
-
+    /**
+     * 状态 0未读，1已读
+     */
+    public int status;
+    /**
+     * 1 收藏
+     */
+    public int star;
     @Override
     public String toString() {
         return "Parent{" +

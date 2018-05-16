@@ -47,7 +47,7 @@ public class DetailMediaGridAdapter extends RecyclerView.Adapter<DetailMediaGrid
 
     @Override
     public void onBindViewHolder(RecyclerHolder holder, int position) {
-        autoHeightTools.setAutoHeight(holder.frameLayout,4);
+        autoHeightTools.setAutoHeight(holder.frameLayout,3);
         Item refs = dataList.get(position);
         GlideHelper.show(holder.iv_media,refs.url);
         holder.frameLayout.setTag(position);

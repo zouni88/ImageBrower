@@ -30,8 +30,8 @@ class MainActivity : AppCompatActivity() {
         val gliderUrl = GlideUrl("http://i.meizitu.net/2018/05/12c10.jpg", Headers {
             val header = HashMap<String, String>()
             //不一定都要添加，具体看原站的请求信息
-            header["User-Agent"] = "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)"
             header["Referer"] = "http://i.meizitu.net"
+            header["User-Agent"] = "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)"
             header["Referer"] = "http://www.mzitu.com"
             header
         })

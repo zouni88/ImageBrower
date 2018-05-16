@@ -43,6 +43,8 @@
         <activity android:name=".view.DetailActivity" />
 
         <activity android:name=".view.tools.preview.PreviewActivity" />
+
+        <activity android:name=".view.SetActivity"/>
     </application>
 
 </manifest>
