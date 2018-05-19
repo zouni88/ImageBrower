@@ -38,16 +38,34 @@ public class ParentDb {
         return parents;
     }
 
+    public List<Parent> getParentsWithUnRead() {
+        List<Parent> parents = new ArrayList<>();
+        SQLiteDatabase sqLiteDatabase = dbHelper.openDatabase();
+        Cursor cursor = sqLiteDatabase.rawQuery("select * from parent where status=0",null);
+        while(cursor.moveToNext()){
+            //获取你的数据
+            Parent parent = new Parent();
+            parent.id = cursor.getInt(cursor.getColumnIndex("id"));
+            parent.title = cursor.getString(cursor.getColumnIndex("title"));
+            parent.status = cursor.getInt(cursor.getColumnIndex("status"));
+            parent.star = cursor.getInt(cursor.getColumnIndex("star"));
+            parents.add(parent);
+        }
+        return parents;
+    }
+
+
     public int deleteById(int id){
         SQLiteDatabase sqLiteDatabase = dbHelper.openDatabase();
         int count = sqLiteDatabase.delete("parent" ,"id=?",new String[]{id+""});
         return count;
     }
 
-    public void star(int id,int star){
+    public int star(int id,int star){
         ContentValues values = new ContentValues();
         values.put("star", star);
         int count = update(id,values);
+        return count;
     }
 
     public int isRead(int id,int status){

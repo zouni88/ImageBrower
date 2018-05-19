@@ -37,6 +37,12 @@ public class ParentManager {
         return list;
     }
 
+    public List<Parent> getListNoRead(Context context){
+        ParentDb parentDb = new ParentDb(context);
+        List<Parent> list = parentDb.getParentsWithUnRead();
+        return list;
+    }
+
     public void  deleteById(Context context,int id){
         ParentDb parentDb = new ParentDb(context);
         if(parentDb.deleteById(id) > 0){
@@ -45,7 +51,10 @@ public class ParentManager {
     }
 
     public void star(Context context,int id,int star){
-
+        ParentDb parentDb = new ParentDb(context);
+        if(parentDb.star(id,star) > 0){
+            onParentListener.delete(id);
+        }
     }
 
     public void read(Context context,int id,int status){

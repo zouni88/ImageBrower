@@ -9,7 +9,8 @@
     <com.github.chrisbanes.photoview.PhotoView
         android:id="@+id/image_zoom"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:scaleType="centerInside"/>
 
     <!--<me.relex.photodraweeview.PhotoDraweeView
         android:id="@+id/image_zoom"

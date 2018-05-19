@@ -11,10 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/divider"
         android:layout_marginTop="10dp"
-        android:background="@color/divider"/>
+        android:background="@color/divider" />
 
     <RelativeLayout
-        android:id="@+id/rl_exchange_point"
+        android:id="@+id/rl_hidden_have_read"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_height"
         android:layout_alignParentTop="true"
@@ -28,26 +28,27 @@
             android:layout_height="match_parent"
             android:drawablePadding="13dip"
             android:gravity="center"
-            android:text="@string/set_clear_cache"
+            android:text="@string/set_hidden_have_read"
             android:textColor="@color/bg_deep_blue" />
 
         <TextView
             android:id="@+id/tv_cache"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:layout_centerVertical="true"
             android:layout_toLeftOf="@+id/iv_arrow_right"
-            android:layout_centerVertical="true"/>
+            android:gravity="center" />
 
         <ImageView
             android:id="@+id/iv_arrow_right"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
-            android:src="@mipmap/arrow_right" />
+            android:src="@mipmap/select_normal" />
 
     </RelativeLayout>
-    <Space
+
+    <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/divider"
         android:background="@color/divider" />
@@ -81,19 +82,44 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/divider"
-        android:background="@color/divider"/>
+        android:background="@color/divider" />
 
-    <Button
-        android:id="@+id/btn_confirm"
+    <View
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/btn_round_blue_bkg"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:text="@string/set_logout"
-        android:layout_marginTop="30dp"
-        android:textColor="@color/white" />
+        android:layout_height="@dimen/divider"
+        android:layout_marginTop="10dp"
+        android:background="@color/divider" />
+
+    <RelativeLayout
+        android:id="@+id/rl_about"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_height"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/menu_item_bg"
+        android:paddingLeft="23dip"
+        android:paddingRight="23dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:drawablePadding="13dip"
+            android:gravity="center"
+            android:text="@string/about"
+            android:textColor="@color/bg_deep_blue" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/arrow_right" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider"
+        android:background="@color/divider" />
 
 
 </LinearLayout>

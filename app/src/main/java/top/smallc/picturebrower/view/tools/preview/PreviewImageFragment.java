@@ -52,11 +52,11 @@ public class PreviewImageFragment extends BaseFragment {
 
     private void initData(){
         Item item = (Item) getArguments().getSerializable("item");
-        isOpen(true,item);
+        isOpen(item);
     }
 
-    private void isOpen(boolean isCan,Item item){
-        GlideHelper.show(imgView,item.url);
+    private void isOpen(Item item){
+        GlideHelper.show1(imgView,item.url);
 //        FrescoControllerUtils.showOriginUrlByPhotoView(imgView,item.url);
     }
 

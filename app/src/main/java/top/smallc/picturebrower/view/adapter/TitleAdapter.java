@@ -48,10 +48,10 @@ public class TitleAdapter extends RecyclerView.Adapter<TitleAdapter.RecyclerHold
     public void onBindViewHolder(RecyclerHolder holder, int position) {
         Parent refs = dataList.get(position);
         if(refs.status == 1){
-            int color = ContextCompat.getColor(holder.linearLayout.getContext(),R.color.red_1);
+            int color = ContextCompat.getColor(holder.linearLayout.getContext(),R.color.isfree);
             holder.linearLayout.setBackgroundColor(color);
         } else {
-            int color = ContextCompat.getColor(holder.linearLayout.getContext(),R.color.colorAccent);
+            int color = ContextCompat.getColor(holder.linearLayout.getContext(),R.color.pay_feedback_text);
             holder.linearLayout.setBackgroundColor(color);
         }
         holder.iv_title.setTag(refs);

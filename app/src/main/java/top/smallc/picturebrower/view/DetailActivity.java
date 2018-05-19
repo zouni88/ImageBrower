@@ -3,6 +3,7 @@ package top.smallc.picturebrower.view;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,20 +17,23 @@ import top.smallc.picturebrower.model.Item;
 import top.smallc.picturebrower.model.Parent;
 import top.smallc.picturebrower.view.adapter.DetailMediaGridAdapter;
 import top.smallc.picturebrower.view.adapter.DetailMediaListAdapter;
+import top.smallc.picturebrower.view.manager.ParentManager;
 import top.smallc.picturebrower.view.tools.GridSpacingItemDecoration;
 import top.smallc.picturebrower.view.tools.HeaderTools;
 import top.smallc.picturebrower.view.tools.PreferenceUtils;
+import top.smallc.picturebrower.view.tools.Utils;
 
 
 /**
  * @author small.cao
  * @date 2018/4/3
  */
-public class DetailActivity extends BaseActivity {
+public class DetailActivity extends BaseActivity implements ParentManager.OnParentListener{
     private Parent parent;
     private RecyclerView recyclerView;
 
     private ImageView iv_point_record;
+    private FloatingActionButton fab_star;
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
@@ -38,6 +42,7 @@ public class DetailActivity extends BaseActivity {
         if(parent == null){
             return;
         }
+        ParentManager.getInstance().setOnParentListener(this);
         initView();
         initData();
     }
@@ -50,6 +55,11 @@ public class DetailActivity extends BaseActivity {
         iv_point_record.setOnClickListener(v -> {
             initShowType();
             initData();
+        });
+        fab_star = super.findViewById(R.id.fab_star);
+        fab_star.setOnClickListener(v->{
+            ParentManager.getInstance().star(context,parent.id,1);
+            Utils.toast(context,"收藏功能暂未开放，请期待");
         });
     }
 
@@ -102,5 +112,10 @@ public class DetailActivity extends BaseActivity {
         Intent intent = new Intent(mContext, DetailActivity.class);
         intent.putExtra("parent", parent);
         mContext.startActivity(intent);
+    }
+
+    @Override
+    public void delete(int id) {
+
     }
 }

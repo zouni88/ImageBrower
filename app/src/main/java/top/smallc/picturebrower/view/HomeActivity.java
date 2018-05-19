@@ -13,6 +13,7 @@ import top.smallc.picturebrower.model.Parent;
 import top.smallc.picturebrower.view.adapter.TitleAdapter;
 import top.smallc.picturebrower.view.manager.ParentManager;
 import top.smallc.picturebrower.view.tools.HeaderTools;
+import top.smallc.picturebrower.view.tools.PreferenceUtils;
 
 /**
  * @author small.cao
@@ -44,9 +45,15 @@ public class HomeActivity extends BaseActivity implements ParentManager.OnParent
     }
 
     private void initData(){
+        boolean isS = PreferenceUtils.getBoolean(context,"isStar",false);
+
         titleAdapter = new TitleAdapter(rcList);
         rcList.setAdapter(titleAdapter);
-        list = ParentManager.getInstance().getList(this);
+        if(isS){
+            list = ParentManager.getInstance().getListNoRead(this);
+        } else {
+            list = ParentManager.getInstance().getList(this);
+        }
         setData();
     }
 
@@ -57,5 +64,11 @@ public class HomeActivity extends BaseActivity implements ParentManager.OnParent
     @Override
     public void delete(int id) {
         setData();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initData();
     }
 }

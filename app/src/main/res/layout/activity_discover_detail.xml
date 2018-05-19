@@ -19,5 +19,14 @@
             android:layout_alignParentTop="true"
             android:background="@color/white"
             android:clipToPadding="false" />
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/fab_star"
+            android:layout_gravity="right|bottom"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="10dp"
+            android:src="@mipmap/star"/>
     </FrameLayout>
+
 </LinearLayout>

@@ -8,6 +8,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="CustomTheme" parent="Theme.AppCompat.Light.DarkActionBar" >
+        <item name="android:background">@color/black_motor</item>
+    </style>
+
     <!-- 自定义dialog -->
     <style name="CustomLoadingDialog" parent="@android:style/Theme.Dialog">
         <item name="android:windowFrame">@null</item>

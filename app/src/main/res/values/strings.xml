@@ -6,9 +6,16 @@
     <string name="home">主页</string>
     <string name="detail">详情</string>
 
-    <string name="set_clear_cache">清除缓存</string>
+    <string name="set_hidden_have_read">隐藏已读</string>
     <string name="set_logout">退出登录</string>
     <string name="set_check_update">检查新版本</string>
     <string name="set">设置</string>
+    <string name="about">关于</string>
+    <string name="about_content">
+        本作品所有数据均来源于网络抓取，个人学习作品，如果涉及不当内容，请联系作者删除！\n
+        作者微博：远观云海义\n
+        欢迎留言指正
+    </string>
+
 
 </resources>
