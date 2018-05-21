@@ -48,7 +48,7 @@ public class DetailActivity extends BaseActivity implements ParentManager.OnPare
     }
 
     private void initView(){
-        HeaderTools.setTitle(this,R.string.detail);
+        HeaderTools.setTitle(this,parent.title);
         recyclerView = super.findViewById(R.id.rv_media);
         iv_point_record = super.findViewById(R.id.iv_point_record);
         iv_point_record.setImageResource(R.mipmap.show_grid);

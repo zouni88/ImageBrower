@@ -28,6 +28,24 @@ public class HeaderTools {
         }
     }
 
+    public static void setTitle(BaseActivity baseActivity, String title){
+        if(baseActivity == null){
+            return;
+        }
+        ImageView back = baseActivity.findViewById(R.id.iv_back);
+        if(back != null){
+            back.setOnClickListener(view ->{
+                baseActivity.finish();
+            });
+        }
+
+        TextView titleTv = baseActivity.findViewById(R.id.tv_title);
+        if(titleTv != null){
+            titleTv.setText(title);
+        }
+    }
+
+
     public static void setTitle(BaseActivity baseActivity,View root, int title){
         if(baseActivity == null){
             return;
