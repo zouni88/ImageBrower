@@ -10,6 +10,7 @@ public class Parent implements Serializable{
 
     public int id;
     public String title;
+    public String url;
     /**
      * 状态 0未读，1已读
      */

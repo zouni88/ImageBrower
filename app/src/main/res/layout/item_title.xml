@@ -28,5 +28,4 @@
             android:src="@mipmap/delete" />
     </LinearLayout>
 
-
 </LinearLayout>

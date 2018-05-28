@@ -1,5 +1,7 @@
 package top.smallc.picturebrower.view;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -59,5 +61,9 @@ public class SetActivity extends BaseActivity {
 
     private void initData(){
         initSelectStatus();
+    }
+
+    public static void start(Context context){
+        context.startActivity(new Intent(context,SetActivity.class));
     }
 }

@@ -17,8 +17,9 @@ import top.smallc.picturebrower.model.Parent;
 public class ParentDb {
 
     private DBOpenHelper dbHelper;
-
+    private Context context;
     public ParentDb(Context context) {
+        this.context = context;
         dbHelper = new DBOpenHelper(context);
     }
 

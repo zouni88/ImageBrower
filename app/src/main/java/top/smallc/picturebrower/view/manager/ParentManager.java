@@ -4,6 +4,7 @@ import android.content.Context;
 
 import java.util.List;
 
+import top.smallc.picturebrower.db.ItemDb;
 import top.smallc.picturebrower.db.ParentDb;
 import top.smallc.picturebrower.model.Parent;
 
@@ -34,12 +35,22 @@ public class ParentManager {
     public List<Parent> getList(Context context){
         ParentDb parentDb = new ParentDb(context);
         List<Parent> list = parentDb.getParents();
+
+        ItemDb itemDb = new ItemDb(context);
+        for(Parent parent : list){
+            parent.url = itemDb.getItemByParentIdLimit1(parent.id).url;
+        }
         return list;
     }
 
     public List<Parent> getListNoRead(Context context){
         ParentDb parentDb = new ParentDb(context);
         List<Parent> list = parentDb.getParentsWithUnRead();
+
+        ItemDb itemDb = new ItemDb(context);
+        for(int i = 0;i<10;i++){
+            list.get(i).url = itemDb.getItemByParentIdLimit1(list.get(i).id).url;
+        }
         return list;
     }
 

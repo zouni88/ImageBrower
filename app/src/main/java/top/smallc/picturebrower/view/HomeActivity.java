@@ -1,17 +1,17 @@
 package top.smallc.picturebrower.view;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import java.util.List;
 
 import top.smallc.picturebrower.R;
 import top.smallc.picturebrower.model.Parent;
-import top.smallc.picturebrower.view.adapter.TitleAdapter;
+import top.smallc.picturebrower.view.adapter.TitleGridAdapter;
 import top.smallc.picturebrower.view.manager.ParentManager;
+import top.smallc.picturebrower.view.tools.GridSpacingItemDecoration;
 import top.smallc.picturebrower.view.tools.HeaderTools;
 import top.smallc.picturebrower.view.tools.PreferenceUtils;
 
@@ -23,7 +23,7 @@ public class HomeActivity extends BaseActivity implements ParentManager.OnParent
 
     private RecyclerView rcList;
 
-    TitleAdapter titleAdapter;
+    TitleGridAdapter titleAdapter;
 
     private List<Parent> list;
     @Override
@@ -38,26 +38,33 @@ public class HomeActivity extends BaseActivity implements ParentManager.OnParent
     private void initView(){
         HeaderTools.setTitle(this,R.string.home);
         super.findViewById(R.id.iv_point_record).setOnClickListener(v->{
-            startActivity(new Intent(context,SetActivity.class));
+            SetActivity.start(v.getContext());
         });
         rcList = super.findViewById(R.id.rv_list);
-        rcList.setLayoutManager(new LinearLayoutManager(this));
+        //列表
+//        rcList.setLayoutManager(new LinearLayoutManager(this));
+        //网格
+        GridLayoutManager layoutManager = new GridLayoutManager(context, 2);
+        int space = context.getResources().getDimensionPixelSize(R.dimen.space1);
+        rcList.addItemDecoration(new GridSpacingItemDecoration(2,space,false));
+        rcList.setLayoutManager(layoutManager);
     }
 
     private void initData(){
-        boolean isS = PreferenceUtils.getBoolean(context,"isStar",false);
-
-        titleAdapter = new TitleAdapter(rcList);
+        titleAdapter = new TitleGridAdapter(rcList);
         rcList.setAdapter(titleAdapter);
+        setData();
+    }
+
+    private void setData(){
+        boolean isS = PreferenceUtils.getBoolean(context,"isStar",false);
         if(isS){
             list = ParentManager.getInstance().getListNoRead(this);
         } else {
             list = ParentManager.getInstance().getList(this);
         }
-        setData();
-    }
 
-    private void setData(){
+
         titleAdapter.setData(list);
     }
 
@@ -69,6 +76,6 @@ public class HomeActivity extends BaseActivity implements ParentManager.OnParent
     @Override
     protected void onResume() {
         super.onResume();
-        initData();
+        setData();
     }
 }
