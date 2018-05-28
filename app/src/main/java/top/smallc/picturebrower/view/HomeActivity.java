@@ -1,9 +1,14 @@
 package top.smallc.picturebrower.view;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+
+import com.lcodecore.tkrefreshlayout.RefreshListenerAdapter;
+import com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout;
+import com.lcodecore.tkrefreshlayout.header.bezierlayout.BezierLayout;
 
 import java.util.List;
 
@@ -24,7 +29,7 @@ public class HomeActivity extends BaseActivity implements ParentManager.OnParent
     private RecyclerView rcList;
 
     TitleGridAdapter titleAdapter;
-
+    TwinklingRefreshLayout refreshLayout;
     private List<Parent> list;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -48,6 +53,26 @@ public class HomeActivity extends BaseActivity implements ParentManager.OnParent
         int space = context.getResources().getDimensionPixelSize(R.dimen.space1);
         rcList.addItemDecoration(new GridSpacingItemDecoration(2,space,false));
         rcList.setLayoutManager(layoutManager);
+
+        refreshLayout = super.findViewById(R.id.refresh);
+        BezierLayout headerView = new BezierLayout(context);
+        refreshLayout.setHeaderView(headerView);
+        refreshLayout.setMaxHeadHeight(140);
+        refreshLayout.setOverScrollBottomShow(false);
+        refreshLayout.setEnableLoadmore(false);
+        refreshLayout.setOnRefreshListener(new RefreshListenerAdapter() {
+            @Override
+            public void onRefresh(final TwinklingRefreshLayout refreshLayout) {
+                new Handler().postDelayed(() ->{
+//                    getCategory();
+                }, 500);
+            }
+
+            @Override
+            public void onLoadMore(final TwinklingRefreshLayout refreshLayout) {
+
+            }
+        });
     }
 
     private void initData(){
@@ -63,7 +88,6 @@ public class HomeActivity extends BaseActivity implements ParentManager.OnParent
         } else {
             list = ParentManager.getInstance().getList(this);
         }
-
 
         titleAdapter.setData(list);
     }
