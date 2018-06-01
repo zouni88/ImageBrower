@@ -14,7 +14,7 @@
         android:layout_marginTop="10dp"
         android:background="@color/divider" />
 
-    <RelativeLayout
+    <!--<RelativeLayout
         android:id="@+id/rl_hidden_have_read"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_height"
@@ -47,12 +47,12 @@
             android:layout_alignParentRight="true"
             android:src="@mipmap/select_normal" />
 
-    </RelativeLayout>
+    </RelativeLayout>-->
 
-    <View
+<!--    <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/divider"
-        android:background="@color/divider" />
+        android:background="@color/divider" />-->
 
     <RelativeLayout
         android:id="@+id/rl_check_update"

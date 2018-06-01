@@ -51,4 +51,18 @@ public class ItemDb {
         cursor.close();
         return item;
     }
+
+    public Item getItemLimit1(SQLiteDatabase sqLiteDatabase ,int parentId){
+        Cursor cursor = sqLiteDatabase.rawQuery("select * from item where parentId = ? limit 1", new String[]{parentId+""});
+
+        Item item = new Item();
+        if(cursor.moveToFirst()){
+            //获取你的数据
+            item.id = cursor.getInt(cursor.getColumnIndex("id"));
+            item.url = cursor.getString(cursor.getColumnIndex("path"));
+            item.parentId = cursor.getInt(cursor.getColumnIndex("parentId"));
+        }
+        cursor.close();
+        return item;
+    }
 }

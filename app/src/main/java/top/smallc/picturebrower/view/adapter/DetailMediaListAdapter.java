@@ -1,6 +1,7 @@
 package top.smallc.picturebrower.view.adapter;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,7 +22,7 @@ import top.smallc.picturebrower.view.tools.preview.PreviewActivity;
  * Created by cao_c on 2018/3/26.
  */
 
-public class DetailMediaListAdapter extends RecyclerView.Adapter<DetailMediaListAdapter.RecyclerHolder> {
+public class DetailMediaListAdapter extends BaseAdapter {
     private Context mContext;
     private ArrayList<Item> dataList = new ArrayList<>();
     private AutoHeightTools autoHeightTools;
@@ -31,7 +32,8 @@ public class DetailMediaListAdapter extends RecyclerView.Adapter<DetailMediaList
         autoHeightTools = new AutoHeightTools(mContext);
     }
 
-    public void setData(List<Item> list) {
+    @Override
+    public void setData(List list) {
         if (null != dataList && list != null) {
             this.dataList.clear();
             this.dataList.addAll(list);
@@ -46,12 +48,14 @@ public class DetailMediaListAdapter extends RecyclerView.Adapter<DetailMediaList
     }
 
     @Override
-    public void onBindViewHolder(RecyclerHolder holder, int position) {
-        autoHeightTools.setAutoHeight(holder.frameLayout,1);
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        RecyclerHolder recyclerHolder = (RecyclerHolder) holder;
+        autoHeightTools.setAutoHeight(recyclerHolder.frameLayout,1);
         Item refs = dataList.get(position);
-        GlideHelper.show(holder.iv_media,refs.url);
-        holder.frameLayout.setTag(position);
+        GlideHelper.show(recyclerHolder.iv_media,refs.url);
+        recyclerHolder.frameLayout.setTag(position);
     }
+
 
     @Override
     public int getItemCount() {

@@ -23,7 +23,6 @@ import top.smallc.picturebrower.view.tools.HeaderTools;
 import top.smallc.picturebrower.view.tools.PreferenceUtils;
 import top.smallc.picturebrower.view.tools.Utils;
 
-
 /**
  * @author small.cao
  * @date 2018/4/3
@@ -99,7 +98,6 @@ public class DetailActivity extends BaseActivity implements ParentManager.OnPare
         recyclerView.setLayoutManager(layoutManager);
         int space = recyclerView.getContext().getResources().getDimensionPixelSize(R.dimen.space1);
         recyclerView.addItemDecoration(new GridSpacingItemDecoration(SPAN_COUNT,space,true));
-        /* adapter 只负责灌输、适配数据，布局交给 LayoutManager，可复用 */
         DetailMediaGridAdapter adapter = new DetailMediaGridAdapter(recyclerView);
         recyclerView.setAdapter(adapter);
 

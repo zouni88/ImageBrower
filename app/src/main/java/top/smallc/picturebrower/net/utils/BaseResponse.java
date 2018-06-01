@@ -8,10 +8,10 @@ import android.content.Context;
  */
 public class BaseResponse {
 
-    public static final int RET_RESP_STATUS_ERROR = 0;
+    public static final int RET_RESP_STATUS_ERROR = 1;
 
     // 访问网络成功 {http : 200}
-    public static final int RET_HTTP_STATUS_OK = 1;
+    public static final int RET_HTTP_STATUS_OK = 0;
     // 访问网络异常(result = 0)
     public static final int RET_HTTP_STATUS_ERROR = -1;
     //服务器异常 (result = 500)

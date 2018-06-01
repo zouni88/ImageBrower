@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/title_height"
-    android:background="@color/white"
+    android:layout_height="wrap_content"
+    android:background="@color/wechat_theme"
+    android:fitsSystemWindows="true"
     android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
         android:layout_weight="1"
         android:gravity="center"
         android:orientation="horizontal">
@@ -20,8 +21,7 @@
             android:src="@mipmap/back"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:background="@drawable/menu_item_bg"
-            android:tint="@color/title_android_color" />
+            android:background="@drawable/menu_item_trans_bg" />
 
         <View
             android:id="@+id/v_divier"
@@ -29,35 +29,30 @@
             android:layout_height="match_parent"
             android:background="@color/divider"
             android:layout_marginTop="10dp"
-            android:layout_toRightOf="@id/iv_back"
             android:layout_marginBottom="10dp" />
 
         <TextView
             android:id="@+id/tv_title"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_centerVertical="true"
+            android:layout_marginStart="15dp"
             android:layout_weight="1"
             android:marqueeRepeatLimit="marquee_forever"
             android:singleLine="true"
             android:ellipsize="marquee"
-            android:text="标题标题标题标题标题标题标题标题标题标题标题标题"
-            android:layout_toRightOf="@id/v_divier"
-            android:textColor="@color/title_android_color"
+            android:text="标题标题标题标题标题标题标题"
+            android:textColor="@color/white"
             android:textSize="@dimen/title_text" />
 
         <ImageView
             android:id="@+id/iv_point_record"
             android:layout_width="@dimen/title_height"
             android:layout_height="match_parent"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
             android:background="@color/transparent"
             android:gravity="center"
             android:src="@mipmap/show_grid"
             android:scaleType="centerInside"
-            android:tint="@color/title_color"
+            android:tint="@color/white"
             />
 
     </LinearLayout>

@@ -1,5 +1,6 @@
 package top.smallc.picturebrower
 
+import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -8,6 +9,9 @@ import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.model.GlideUrl
 import com.bumptech.glide.load.model.Headers
+import top.smallc.picturebrower.db.DBOpenHelper
+import top.smallc.picturebrower.db.ItemDb
+import top.smallc.picturebrower.db.ParentDb
 import top.smallc.picturebrower.view.HomeActivity
 import java.util.*
 
@@ -39,4 +43,20 @@ class MainActivity : AppCompatActivity() {
         //显示图片
         Glide.with(view.getContext()).load(gliderUrl).into(view)
     }
+
+    fun abcd(view : View){
+        var list = ParentDb(this).parents
+        var item = ItemDb(this)
+
+        var dbOpenHelper = DBOpenHelper(this)
+        var sqLiteDatabase = dbOpenHelper.openDatabase()
+        for (parent in list) {
+            var url = item.getItemLimit1(sqLiteDatabase, parent.id).url;
+            val values = ContentValues()
+            values.put("url", url)
+            sqLiteDatabase!!.update("parent", values, "id=?", arrayOf<String>(parent.id.toString() ))
+        }
+    }
+
+
 }

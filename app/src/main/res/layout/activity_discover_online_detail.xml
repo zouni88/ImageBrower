@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/title_public_third_android" />
+
+    <FrameLayout
+        android:id="@+id/fl_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout
+            android:id="@+id/refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_media"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:background="@color/white"
+                android:clipToPadding="false" />
+        </com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_star"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|bottom"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="10dp"
+            android:src="@mipmap/star" />
+    </FrameLayout>
+
+</LinearLayout>

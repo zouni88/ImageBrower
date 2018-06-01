@@ -15,6 +15,12 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="abcd"
+        android:text="abcd"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:onClick="home"
         android:text="home"/>
 

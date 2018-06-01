@@ -13,6 +13,8 @@ import java.net.URL;
 import java.net.UnknownHostException;
 import java.util.Map;
 
+import top.smallc.picturebrower.BuildConfig;
+
 /**
  * @author small.cao
  */
@@ -41,7 +43,9 @@ public class HttpUtils extends HttpBaseUtils {
             StringBuffer sb = encodeParam(paramMap);
             param = sb.substring(1, sb.length());
         }
-        Log.e(TAG,"param=" + param);
+        if(BuildConfig.DEBUG) {
+            Log.e(TAG, "param=" + param);
+        }
         return postResponse(urls, headers,param, timeout);
     }
 
@@ -57,7 +61,9 @@ public class HttpUtils extends HttpBaseUtils {
         DataOutputStream os = null;
         InputStream fStream = null;
         try {
-            Log.e(TAG,"url=" + urls + param);
+            if(BuildConfig.DEBUG){
+                Log.e(TAG,"url=" + urls + param);
+            }
             URL url = new URL(requestType == 0 ? urls + param : urls);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setConnectTimeout(5000);

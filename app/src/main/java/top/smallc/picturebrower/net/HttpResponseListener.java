@@ -1,6 +1,7 @@
 package top.smallc.picturebrower.net;
 
-import com.meetu.gxs.net.utils.BaseResponse;
+
+import top.smallc.picturebrower.net.utils.BaseResponse;
 
 /**
  * Http请求返回后的回调接口

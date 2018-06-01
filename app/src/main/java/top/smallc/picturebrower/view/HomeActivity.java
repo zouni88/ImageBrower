@@ -14,23 +14,25 @@ import java.util.List;
 
 import top.smallc.picturebrower.R;
 import top.smallc.picturebrower.model.Parent;
+import top.smallc.picturebrower.net.HttpRequestController;
+import top.smallc.picturebrower.net.utils.BaseResponse;
 import top.smallc.picturebrower.view.adapter.TitleGridAdapter;
 import top.smallc.picturebrower.view.manager.ParentManager;
 import top.smallc.picturebrower.view.tools.GridSpacingItemDecoration;
 import top.smallc.picturebrower.view.tools.HeaderTools;
 import top.smallc.picturebrower.view.tools.PreferenceUtils;
+import top.smallc.picturebrower.view.tools.Utils;
 
 /**
  * @author small.cao
  * @date 2018/5/14
  */
 public class HomeActivity extends BaseActivity implements ParentManager.OnParentListener{
-
+    private final int MAX_COUNT = 20;
     private RecyclerView rcList;
 
     TitleGridAdapter titleAdapter;
     TwinklingRefreshLayout refreshLayout;
-    private List<Parent> list;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,13 +66,15 @@ public class HomeActivity extends BaseActivity implements ParentManager.OnParent
             @Override
             public void onRefresh(final TwinklingRefreshLayout refreshLayout) {
                 new Handler().postDelayed(() ->{
-//                    getCategory();
+                    getList(true);
                 }, 500);
             }
 
             @Override
             public void onLoadMore(final TwinklingRefreshLayout refreshLayout) {
-
+                new Handler().postDelayed(() ->{
+                    getList(false);
+                }, 500);
             }
         });
     }
@@ -83,6 +87,7 @@ public class HomeActivity extends BaseActivity implements ParentManager.OnParent
 
     private void setData(){
         boolean isS = PreferenceUtils.getBoolean(context,"isStar",false);
+        List<Parent> list;
         if(isS){
             list = ParentManager.getInstance().getListNoRead(this);
         } else {
@@ -101,5 +106,34 @@ public class HomeActivity extends BaseActivity implements ParentManager.OnParent
     protected void onResume() {
         super.onResume();
         setData();
+    }
+
+    private int pageNum = 1;
+    private void getList(boolean isRefresh){
+        if(isRefresh){
+            this.pageNum = 1;
+        }
+        HttpRequestController.getList(context, pageNum, MAX_COUNT, response -> {
+            stopLoading(isRefresh);
+            if(response.getRetCode() == BaseResponse.RET_HTTP_STATUS_OK && response.categories!=null){
+                if(response.categories.size() < MAX_COUNT){
+                    refreshLayout.setEnableLoadmore(false);
+                }
+                pageNum++;
+                titleAdapter.setData(response.categories);
+            } else {
+                Utils.toast(context,response.getRetInfo());
+            }
+
+        });
+    }
+
+    public void stopLoading(boolean isRefresh){
+        context.dismissCustomDialog();
+        if(!isRefresh){
+            refreshLayout.finishLoadmore();
+        } else {
+            refreshLayout.finishRefreshing();
+        }
     }
 }

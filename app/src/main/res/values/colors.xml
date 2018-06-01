@@ -72,4 +72,8 @@
     <color name="time_color">#828282</color>
     <color name="name_color">#333333</color>
     <color name="black_motor">#26262A</color>
+
+    <color name="wechat_theme">#393A3F</color>
+    <color name="wechat_bg_gray">#EBEBEB</color>
+
 </resources>

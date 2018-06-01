@@ -34,8 +34,10 @@ public class ParentDb {
             parent.title = cursor.getString(cursor.getColumnIndex("title"));
             parent.status = cursor.getInt(cursor.getColumnIndex("status"));
             parent.star = cursor.getInt(cursor.getColumnIndex("star"));
+            parent.url = cursor.getString(cursor.getColumnIndex("url"));
             parents.add(parent);
         }
+        cursor.close();
         return parents;
     }
 
@@ -50,6 +52,7 @@ public class ParentDb {
             parent.title = cursor.getString(cursor.getColumnIndex("title"));
             parent.status = cursor.getInt(cursor.getColumnIndex("status"));
             parent.star = cursor.getInt(cursor.getColumnIndex("star"));
+            parent.url = cursor.getString(cursor.getColumnIndex("url"));
             parents.add(parent);
         }
         return parents;
